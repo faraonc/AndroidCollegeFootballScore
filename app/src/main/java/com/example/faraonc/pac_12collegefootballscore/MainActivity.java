@@ -15,8 +15,10 @@ import android.view.View;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private int scoreA = 0;
-    private int scoreB = 0;
+    private int scoreA;
+    private int scoreB;
+    private boolean didTeamAJustScoredTD = false;
+    private boolean didTeamBJustScoredTD = false;
 
     /* CONSTANTS */
     private final static int UW_COLOR = Color.parseColor("#4b2e83");
@@ -26,10 +28,50 @@ public class MainActivity extends AppCompatActivity {
     private final static int TWO = 2;
     private final static int ONE = 1;
 
+    private static final String STATE_INT_SCORE_A = "scoreA";
+    private static final String STATE_INT_SCORE_B = "scoreB";
+    private static final String STATE_BOOL_TD_A = "didTeamAJustScoredTD";
+    private static final String STATE_BOOL_TD_B = "didTeamBJustScoredTD";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Make sure to call the super method so that the states of our views are saved
+        super.onSaveInstanceState(outState);
+        // Save our own state now
+        outState.putInt(STATE_INT_SCORE_A, this.scoreA);
+        outState.putInt(STATE_INT_SCORE_B, this.scoreB);
+        outState.putBoolean(STATE_BOOL_TD_A, this.didTeamAJustScoredTD);
+        outState.putBoolean(STATE_BOOL_TD_B, this.didTeamBJustScoredTD);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+            this.scoreA = savedInstanceState.getInt(STATE_INT_SCORE_A, 0);
+            this.scoreB = savedInstanceState.getInt(STATE_INT_SCORE_B, 0);
+            this.didTeamAJustScoredTD = savedInstanceState.getBoolean(STATE_BOOL_TD_A, false);
+            this.didTeamBJustScoredTD = savedInstanceState.getBoolean(STATE_BOOL_TD_B, false);
+
+            if (this.didTeamAJustScoredTD) {
+                disableScoreButtonsForTeamB();
+                disableAddingScoreForTeamA();
+            }
+
+            if (this.didTeamBJustScoredTD) {
+                disableScoreButtonsForTeamA();
+                disableAddingScoreForTeamB();
+            }
+
+            displayForTeamA(this.scoreA);
+            displayForTeamB(this.scoreB);
+        }
     }
 
     /**
@@ -52,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         if ((this.scoreA + SIX) < Integer.MAX_VALUE) {
             disableAddingScoreForTeamA();
             disableScoreButtonsForTeamB();
+            this.didTeamAJustScoredTD = true;
             displayForTeamA(this.scoreA = this.scoreA + SIX);
         }
     }
@@ -77,6 +120,9 @@ public class MainActivity extends AppCompatActivity {
         if ((this.scoreA + TWO) < Integer.MAX_VALUE) {
             enableAddingScoreForTeamA();
             enableAddingScoreForTeamB();
+            if (this.didTeamAJustScoredTD) {
+                this.didTeamAJustScoredTD = false;
+            }
             displayForTeamA(this.scoreA = this.scoreA + TWO);
         }
     }
@@ -89,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addOneForTeamA(View view) {
         if ((this.scoreA + ONE) < Integer.MAX_VALUE) {
-            enableAddingScoreForTeamA();
             displayForTeamA(this.scoreA = this.scoreA + ONE);
         }
+        this.didTeamAJustScoredTD = false;
         enableAddingScoreForTeamA();
         enableAddingScoreForTeamB();
     }
@@ -102,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view The view that triggers the event handling.
      */
     public void failedPatForTeamA(View view) {
+        this.didTeamAJustScoredTD = false;
         enableAddingScoreForTeamA();
         enableAddingScoreForTeamB();
     }
@@ -205,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
         if ((this.scoreB + SIX) < Integer.MAX_VALUE) {
             disableAddingScoreForTeamB();
             disableScoreButtonsForTeamA();
+            this.didTeamBJustScoredTD = true;
             displayForTeamB(this.scoreB = this.scoreB + SIX);
         }
     }
@@ -230,6 +278,9 @@ public class MainActivity extends AppCompatActivity {
         if ((this.scoreB + TWO) < Integer.MAX_VALUE) {
             enableAddingScoreForTeamA();
             enableAddingScoreForTeamB();
+            if (this.didTeamBJustScoredTD) {
+                this.didTeamBJustScoredTD = false;
+            }
             displayForTeamB(this.scoreB = this.scoreB + TWO);
         }
     }
@@ -244,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
         if ((this.scoreB + ONE) < Integer.MAX_VALUE) {
             displayForTeamB(this.scoreB = this.scoreB + ONE);
         }
+        this.didTeamBJustScoredTD = false;
         enableAddingScoreForTeamB();
         enableAddingScoreForTeamA();
     }
@@ -254,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view The view that triggers the event handling.
      */
     public void failedPatForTeamB(View view) {
+        this.didTeamBJustScoredTD = false;
         enableAddingScoreForTeamB();
         enableAddingScoreForTeamA();
     }
@@ -344,6 +397,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void reset(View view) {
         this.scoreA = this.scoreB = 0;
+        this.didTeamAJustScoredTD = this.didTeamBJustScoredTD = false;
         enableAddingScoreForTeamA();
         enableAddingScoreForTeamB();
         displayForTeamA(this.scoreA);
