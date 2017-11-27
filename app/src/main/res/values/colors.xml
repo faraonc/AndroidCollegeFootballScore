@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#D61E26</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorTeam">#616161</color>
+    <color name="colorScore">#000000</color>
+    <color name="colorUW">#4b2e83</color>
+    <color name="colorWSU">#981e32</color>
+    <color name="colorButton">#FFFFFF</color>
+    <color name="colorPat">#444444</color>
+</resources>

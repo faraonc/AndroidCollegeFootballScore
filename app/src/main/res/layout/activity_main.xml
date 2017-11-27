@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.example.faraonc.pac_12collegefootballscore.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4sp">
+
+        <LinearLayout
+            android:id="@+id/team_pane"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/wsu_logo_content"
+                    android:src="@drawable/wsu_logo" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/team_A"
+                    android:textColor="@color/colorTeam"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/team_a_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:text="@string/score_A"
+                    android:textColor="@color/colorScore"
+                    android:textSize="56sp" />
+
+                <Button
+                    android:id="@+id/td_button_A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorWSU"
+                    android:onClick="addSixForTeamA"
+                    android:text="@string/touchdown"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorButton" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/pat"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/pat_good_A"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPat"
+                        android:onClick="addOneForTeamA"
+                        android:text="@string/pat_good"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorButton" />
+
+                    <Button
+                        android:id="@+id/pat_bad_A"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPat"
+                        android:onClick="failedPatForTeamA"
+                        android:text="@string/pat_bad"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorButton" />
+
+                    <Button
+                        android:id="@+id/conv_A"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPat"
+                        android:onClick="addTwoForTeamA"
+                        android:text="@string/conv"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorButton" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/fg_button_A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorWSU"
+                    android:onClick="addThreeForTeamA"
+                    android:text="@string/fg"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorButton" />
+
+                <Button
+                    android:id="@+id/safety_button_A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorWSU"
+                    android:onClick="addTwoForTeamA"
+                    android:text="@string/safety_conversion"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorButton" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@android:color/black" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/uw_logo_content"
+                    android:src="@drawable/uw_logo" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/team_B"
+                    android:textColor="@color/colorTeam"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/team_b_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:text="@string/score_B"
+                    android:textColor="@color/colorScore"
+                    android:textSize="56sp" />
+
+                <Button
+                    android:id="@+id/td_button_B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorUW"
+                    android:onClick="addSixForTeamB"
+                    android:text="@string/touchdown"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorButton" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/pat"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/pat_good_B"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPat"
+                        android:onClick="addOneForTeamB"
+                        android:text="@string/pat_good"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorButton" />
+
+                    <Button
+                        android:id="@+id/pat_bad_B"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPat"
+                        android:onClick="failedPatForTeamB"
+                        android:text="@string/pat_bad"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorButton" />
+
+                    <Button
+                        android:id="@+id/conv_B"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPat"
+                        android:onClick="addTwoForTeamB"
+                        android:text="@string/conv"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorButton" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/fg_button_B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorUW"
+                    android:onClick="addThreeForTeamB"
+                    android:text="@string/fg"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorButton" />
+
+                <Button
+                    android:id="@+id/safety_button_B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@color/colorUW"
+                    android:onClick="addTwoForTeamB"
+                    android:text="@string/safety_conversion"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorButton" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- This RelativeLayout is required to prevent the reset button from overlapping-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/team_pane"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="4dp"
+                android:background="@android:color/black"
+                android:onClick="reset"
+                android:text="@string/reset"
+                android:textColor="@color/colorButton" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>

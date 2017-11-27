@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Pac-12 College Football Score</string>
+    <string name="score_A">0</string>
+    <string name="score_B">0</string>
+    <string name="team_A">Washington State University</string>
+    <string name="team_B">University of Washington</string>
+    <string name="touchdown">+6 Pts TD</string>
+    <string name="pat">+1 or 2 Pts PAT</string>
+    <string name="conv">+2</string>
+    <string name="fg">+3 Pts FG</string>
+    <string name="safety_conversion">+2 Pts Safety</string>
+    <string name="reset">Reset</string>
+    <string name="wsu_logo_content">WSU logo.</string>
+    <string name="uw_logo_content">UW logo.</string>
+    <string name="pat_bad">Fail</string>
+    <string name="pat_good">Good</string>
+</resources>
